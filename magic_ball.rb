@@ -23,8 +23,14 @@ class MagicBall
   ]
 
   def ask(question)
-    raise 'Question has invalid format.' unless question.is_a?(String) && question[-1] == '?'
+    raise 'Question has invalid format.' unless valid_question?(question)
 
     ANSWERS.sample
+  end
+
+  private
+
+  def valid_question?(question)
+    question.is_a?(String) && question[-1] == '?'
   end
 end
